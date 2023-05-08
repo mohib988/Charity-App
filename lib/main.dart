@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/login.dart';
+import 'package:flutter_application_1/pages/org_signup_page.dart';
+import 'package:flutter_application_1/pages/signup_page.dart';
+
+import 'AppTheme/app_theme.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,8 +15,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: MyTheme.lightTheme(context),
       debugShowCheckedModeBanner: false,
-      routes: {"/": (context) => LoginPage()},
+      routes: {
+        "/login": (context) => LoginPage(),
+        "/signup": (context) => SignupPage(),
+        "/": (context) => OrganizationSignupPage(),
+      },
     );
   }
 }
