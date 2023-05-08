@@ -22,7 +22,7 @@ class SignupUser {
       email: json['email'] ?? '',
       password: json['password'] ?? '',
       confirmPassword: json['confirmPassword'] ?? '',
-      userType: json['userType'] ?? '', // added userType initialization
+      userType: json['userType'] ?? 'User', // added userType initialization
     );
   }
 
@@ -115,11 +115,30 @@ class SignupPageState extends State<SignupPage> {
                 label: 'Confirm Password',
                 placeholder: 'Confirm your password',
               ),
-              SizedBox(height: 26.0),
+              SizedBox(height: 8.0),
+              DropdownButton(
+                items: [
+                  DropdownMenuItem(value: "User", child: Text("User")),
+                  DropdownMenuItem(
+                    value: "Organization",
+                    child: Text("Organization"),
+                  )
+                ],
+                onChanged: (value) {
+                  setState(() {
+                    if (value != null) {
+                      _user.userType = value;
+                    }
+                    // _user.userType = value;
+                  });
+                },
+              ),
+              SizedBox(height: 8.0),
               ElevatedButton(
                 onPressed: () {
                   // Implement signup logic here
-                  userSignup(_user.userType);
+                  print(_user.userType);
+                  userSignup(_user);
                 },
                 child: Text('Sign up'),
               ),
