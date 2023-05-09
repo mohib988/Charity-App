@@ -19,12 +19,11 @@ class MyApp extends StatelessWidget {
       theme: MyTheme.lightTheme(context),
       debugShowCheckedModeBanner: false,
       home: const splash(),
-      // routes: {
-      //   "/splash": (context) => splash(),
-      //   "/login": (context) => LoginPage(),
-      //   "/signup": (context) => SignupPage(),
-      //   "/": (context) => OrganizationSignupPage(),
-      // },
+      routes: {
+        "/login": (context) => LoginPage(),
+        "/signup": (context) => SignupPage(),
+        "/org": (context) => OrganizationSignupPage(),
+      },
     );
   }
 }
