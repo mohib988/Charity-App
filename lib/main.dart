@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/login.dart';
 import 'package:flutter_application_1/pages/org_signup_page.dart';
 import 'package:flutter_application_1/pages/signup_page.dart';
+import 'package:flutter_application_1/pages/splash.dart';
 
 import 'AppTheme/app_theme.dart';
 
@@ -17,11 +18,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: MyTheme.lightTheme(context),
       debugShowCheckedModeBanner: false,
-      routes: {
-        "/login": (context) => LoginPage(),
-        "/signup": (context) => SignupPage(),
-        "/": (context) => OrganizationSignupPage(),
-      },
+      home: const splash(),
+      // routes: {
+      //   "/splash": (context) => splash(),
+      //   "/login": (context) => LoginPage(),
+      //   "/signup": (context) => SignupPage(),
+      //   "/": (context) => OrganizationSignupPage(),
+      // },
     );
   }
 }
