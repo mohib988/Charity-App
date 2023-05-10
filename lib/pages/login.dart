@@ -178,17 +178,15 @@ class _LoginPageState extends State<LoginPage> {
               child: Text("Login"),
               onHover: (value) => {print(_buttonController.value)},
             ),
-            TextButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => SignupPage(),
-                    ),
-                  );
-                },
-                child: Text("Go to signup"))
           ],
         ),
+      ),
+      bottomNavigationBar: SafeArea(
+        child: TextButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed("/signup");
+            },
+            child: Text("Go to signup")),
       ),
       drawer: Drawer(),
     );

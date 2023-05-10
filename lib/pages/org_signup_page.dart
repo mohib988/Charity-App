@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:image_picker/image_picker.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/urls/urls.dart';
@@ -36,6 +37,19 @@ class OrganizationInfo {
     data['mission'] = mission;
     data['description'] = description;
     return data;
+  }
+}
+
+final ImagePicker picker = ImagePicker();
+void _pickImage() async {
+  try {
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+    print(image);
+
+    // _imageFile = pickedFile!.path;
+    // print(pickedFile);
+  } catch (e) {
+    print("Image picker error $e");
   }
 }
 
@@ -134,6 +148,11 @@ class OrganizationSignupPageState extends State<OrganizationSignupPage> {
                   textScaleFactor: 1.3,
                 ),
               ),
+              ElevatedButton(
+                  onPressed: () {
+                    _pickImage();
+                  },
+                  child: Text("get image"))
             ],
           ),
         ),

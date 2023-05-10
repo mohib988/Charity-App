@@ -1,20 +1,27 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/login.dart';
 import 'package:flutter_application_1/urls/urls.dart';
 
-class SignupUser {
-  String username = '';
-  String email = '';
-  String password = '';
-  String confirmPassword = '';
-  String userType = ''; // added userType field
+import 'package:google_sign_in/google_sign_in.dart';
 
+const List<String> scopes = <String>[
+  'email',
+  'https://www.googleapis.com/auth/contacts.readonly',
+];
+GoogleSignIn _googleSignIn = GoogleSignIn(
+  // Optional clientId
+  // clientId: 'your-client_id.apps.googleusercontent.com',
+  scopes: scopes,
+);
+
+class SignupUser {
   SignupUser({
     this.username = '',
     this.email = '',
     this.password = '',
     this.confirmPassword = '',
-    this.userType = '', // added userType initialization
+    this.userType = 'User', // added userType initialization
   });
 
   factory SignupUser.fromJson(Map<String, dynamic> json) {
@@ -26,6 +33,12 @@ class SignupUser {
       userType: json['userType'] ?? 'User', // added userType initialization
     );
   }
+
+  String confirmPassword = '';
+  String email = '';
+  String password = '';
+  String userType = ''; // added userType field
+  String username = '';
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
@@ -44,8 +57,6 @@ class SignupPage extends StatefulWidget {
 }
 
 class SignupPageState extends State<SignupPage> {
-  late final SignupUser _user = SignupUser();
-
   Function(dynamic value)? _getOnChangedFunction(String type) {
     final fieldMap = {
       'username': (value) => _user.username = value,
@@ -57,6 +68,8 @@ class SignupPageState extends State<SignupPage> {
     };
     return fieldMap[type];
   }
+
+  late final SignupUser _user = SignupUser();
 
   Widget _buildTextField(
       {required String type,
@@ -79,83 +92,82 @@ class SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Signup Page'),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(10.0),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                radius: 50.0,
-                child: Text("Child"),
-              ),
-              SizedBox(height: 30.0),
-              _buildTextField(
-                type: 'username',
-                label: 'Username',
-                placeholder: 'Enter your username',
-              ),
-              SizedBox(height: 16.0),
-              _buildTextField(
-                type: 'email',
-                label: 'Email',
-                placeholder: 'Enter your email',
-              ),
-              SizedBox(height: 16.0),
-              _buildTextField(
-                type: 'password',
-                label: 'Password',
-                placeholder: 'Enter your password',
-              ),
-              SizedBox(height: 16.0),
-              _buildTextField(
-                type: 'confirmPassword',
-                label: 'Confirm Password',
-                placeholder: 'Confirm your password',
-              ),
-              SizedBox(height: 8.0),
-              DropdownButton(
-                items: [
-                  DropdownMenuItem(value: "User", child: Text("User")),
-                  DropdownMenuItem(
-                    value: "Organization",
-                    child: Text("Organization"),
-                  )
-                ],
-                onChanged: (value) {
-                  setState(() {
-                    if (value != null) {
-                      _user.userType = value;
-                    }
-                    // _user.userType = value;
-                  });
-                },
-              ),
-              SizedBox(height: 8.0),
-              ElevatedButton(
-                onPressed: () {
-                  // Implement signup logic here
-                  print(_user.userType);
-                  userSignup(_user);
-                },
-                child: Text('Sign up'),
-              ),
-              TextButton(
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => LoginPage(),
-                      ),
-                    );
+        appBar: AppBar(
+          title: Text('Signup Page'),
+        ),
+        body: Padding(
+          padding: EdgeInsets.all(10.0),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  radius: 50.0,
+                  child: Text("Child"),
+                ),
+                SizedBox(height: 30.0),
+                _buildTextField(
+                  type: 'username',
+                  label: 'Username',
+                  placeholder: 'Enter your username',
+                ),
+                SizedBox(height: 16.0),
+                _buildTextField(
+                  type: 'email',
+                  label: 'Email',
+                  placeholder: 'Enter your email',
+                ),
+                SizedBox(height: 16.0),
+                _buildTextField(
+                  type: 'password',
+                  label: 'Password',
+                  placeholder: 'Enter your password',
+                ),
+                SizedBox(height: 16.0),
+                _buildTextField(
+                  type: 'confirmPassword',
+                  label: 'Confirm Password',
+                  placeholder: 'Confirm your password',
+                ),
+                SizedBox(height: 8.0),
+                DropdownButton(
+                  hint: Text(_user.userType),
+                  dropdownColor: Theme.of(context).colorScheme.primary,
+                  items: [
+                    DropdownMenuItem(value: "User", child: Text("User")),
+                    DropdownMenuItem(
+                      value: "Organization",
+                      child: Text("Organization"),
+                    )
+                  ],
+                  onChanged: (value) {
+                    setState(() {
+                      if (value != null) {
+                        _user.userType = value;
+                      }
+                      // _user.userType = value;
+                    });
                   },
-                  child: Text("Go to login"))
-            ],
+                ),
+                SizedBox(height: 8.0),
+                ElevatedButton(
+                  onPressed: () {
+                    // Implement signup logic here
+                    print(_user.userType);
+                    userSignup(_user);
+                  },
+                  child: Text('Sign up'),
+                ),
+              ],
+            ),
           ),
         ),
-      ),
-    );
+        bottomNavigationBar: SafeArea(
+          child: TextButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed("/login");
+              },
+              child: Text("Go to login")),
+        ));
   }
 }
