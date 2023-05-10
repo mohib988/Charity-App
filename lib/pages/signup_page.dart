@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/urls/urls.dart';
 
 class SignupUser {
-  String name = '';
+  String username = '';
   String email = '';
   String password = '';
   String confirmPassword = '';
   String userType = ''; // added userType field
 
   SignupUser({
-    this.name = '',
+    this.username = '',
     this.email = '',
     this.password = '',
     this.confirmPassword = '',
@@ -18,7 +18,7 @@ class SignupUser {
 
   factory SignupUser.fromJson(Map<String, dynamic> json) {
     return SignupUser(
-      name: json['name'] ?? '',
+      username: json['name'] ?? '',
       email: json['email'] ?? '',
       password: json['password'] ?? '',
       confirmPassword: json['confirmPassword'] ?? '',
@@ -28,11 +28,11 @@ class SignupUser {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['name'] = name;
+    data['username'] = username;
     data['email'] = email;
-    data['password'] = password;
-    data['confirmPassword'] = confirmPassword;
-    data['userType'] = userType; // added userType serialization
+    data['password1'] = password;
+    data['password2'] = confirmPassword;
+    data['user_type'] = userType; // added userType serialization
     return data;
   }
 }
@@ -47,7 +47,7 @@ class SignupPageState extends State<SignupPage> {
 
   Function(dynamic value)? _getOnChangedFunction(String type) {
     final fieldMap = {
-      'name': (value) => _user.name = value,
+      'username': (value) => _user.username = value,
       'email': (value) => _user.email = value,
       'password': (value) => _user.password = value,
       'confirmPassword': (value) => _user.confirmPassword = value,
@@ -93,9 +93,9 @@ class SignupPageState extends State<SignupPage> {
               ),
               SizedBox(height: 30.0),
               _buildTextField(
-                type: 'name',
-                label: 'Name',
-                placeholder: 'Enter your name',
+                type: 'username',
+                label: 'Username',
+                placeholder: 'Enter your username',
               ),
               SizedBox(height: 16.0),
               _buildTextField(
