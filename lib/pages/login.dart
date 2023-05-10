@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import "package:flutter/material.dart";
+import 'package:flutter_application_1/pages/signup_page.dart';
 import '../urls/urls.dart';
 import 'package:http/http.dart' as http;
 
@@ -12,10 +13,11 @@ class User {
 
   User.fromJson(Map<String, dynamic> json)
       : username = json['username'],
-      email = json['email'],
+        email = json['email'],
         password = json['password'];
   Map<String, dynamic> toJson() => {
-        'username':username,'email': email,
+        'username': username,
+        'email': email,
         'password': password,
       };
 }
@@ -35,16 +37,15 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  User user = User("","", "");
+  User user = User("", "", "");
   Map<String, dynamic> a = {"name": "mohib", "age": 34};
   // final _textFieldController = TextEditingController();
   final _buttonController = MaterialStatesController();
 
   Function(dynamic value)? _getOnChangedFunction(String type) {
     final fieldMap = {
-
       'username': (value) => user.username = value,
-      'email':(value) => user.email = value,
+      'email': (value) => user.email = value,
       'password': (value) => user.password = value,
     };
     return fieldMap[type];
@@ -98,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
               label: 'Email',
               placeholder: 'Enter your email',
             ),
-            
+
             // SizedBox(
             //   width: 300,
             //   child: TextFormField(
@@ -176,7 +177,16 @@ class _LoginPageState extends State<LoginPage> {
               },
               child: Text("Login"),
               onHover: (value) => {print(_buttonController.value)},
-            )
+            ),
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => SignupPage(),
+                    ),
+                  );
+                },
+                child: Text("Go to signup"))
           ],
         ),
       ),

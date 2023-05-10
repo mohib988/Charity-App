@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/login.dart';
 import 'package:flutter_application_1/urls/urls.dart';
 
 class SignupUser {
@@ -142,6 +143,15 @@ class SignupPageState extends State<SignupPage> {
                 },
                 child: Text('Sign up'),
               ),
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => LoginPage(),
+                      ),
+                    );
+                  },
+                  child: Text("Go to login"))
             ],
           ),
         ),
