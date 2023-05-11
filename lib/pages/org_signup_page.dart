@@ -1,8 +1,12 @@
 import 'dart:convert';
+import 'dart:io';
+import 'package:flutter_application_1/pages/avatar_picker.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/urls/urls.dart';
+// import 'package:flutter_application_1/urls/urls.dart';
+
+import '../urls/UrlForPics/url_for_picture.dart';
 
 class OrganizationInfo {
   String name = '';
@@ -10,6 +14,7 @@ class OrganizationInfo {
   String country = '';
   String mission = '';
   String description = '';
+  File image;
 
   OrganizationInfo({
     this.name = '',
@@ -17,6 +22,7 @@ class OrganizationInfo {
     this.country = '',
     this.mission = '',
     this.description = '',
+    required this.image,
   });
 
   factory OrganizationInfo.fromJson(Map<String, dynamic> json) {
@@ -26,6 +32,7 @@ class OrganizationInfo {
       country: json['country'] ?? '',
       mission: json['mission'] ?? '',
       description: json['description'] ?? '',
+      image: json['image'] != null ? File(json['image']) : File(''),
     );
   }
 
@@ -36,20 +43,17 @@ class OrganizationInfo {
     data['country'] = country;
     data['mission'] = mission;
     data['description'] = description;
+    data['image'] = image.path;
     return data;
   }
-}
 
-final ImagePicker picker = ImagePicker();
-void _pickImage() async {
-  try {
-    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-    print(image);
+  Future<void> pickImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
-    // _imageFile = pickedFile!.path;
-    // print(pickedFile);
-  } catch (e) {
-    print("Image picker error $e");
+    if (pickedFile != null) {
+      image = File(pickedFile.path);
+    }
   }
 }
 
@@ -59,7 +63,7 @@ class OrganizationSignupPage extends StatefulWidget {
 }
 
 class OrganizationSignupPageState extends State<OrganizationSignupPage> {
-  late final OrganizationInfo _organization = OrganizationInfo();
+  late final OrganizationInfo _organization = OrganizationInfo(image: File(""));
 
   Function(dynamic value)? _getOnChangedFunction(String type) {
     final fieldMap = {
@@ -104,9 +108,12 @@ class OrganizationSignupPageState extends State<OrganizationSignupPage> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(32.0),
-                child: CircleAvatar(
-                  radius: 50,
-                  child: Text("org"),
+                child: AvatarPicker(
+                  onImagePicked: (File pickedImage) {
+                    setState(() {
+                      _organization.image = pickedImage;
+                    });
+                  },
                 ),
               ),
               _buildTextField(
@@ -142,17 +149,13 @@ class OrganizationSignupPageState extends State<OrganizationSignupPage> {
               ElevatedButton(
                 onPressed: () {
                   orgSignUp(_organization);
+                  print('thi');
                 },
                 child: Text(
                   'Sign up',
                   textScaleFactor: 1.3,
                 ),
               ),
-              ElevatedButton(
-                  onPressed: () {
-                    _pickImage();
-                  },
-                  child: Text("get image"))
             ],
           ),
         ),

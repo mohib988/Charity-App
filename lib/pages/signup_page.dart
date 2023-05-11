@@ -163,11 +163,20 @@ class SignupPageState extends State<SignupPage> {
           ),
         ),
         bottomNavigationBar: SafeArea(
-          child: TextButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed("/login");
-              },
-              child: Text("Go to login")),
+          child: Row(
+            children: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed("/login");
+                  },
+                  child: Text("Go to login")),
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed("/org");
+                  },
+                  child: Text("Go to login")),
+            ],
+          ),
         ));
   }
 }

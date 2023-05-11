@@ -11,11 +11,6 @@ login(value) {
   return apiClient.post('/dj-rest-auth/login/', value);
 }
 
-orgSignUp(value) {
-  print("hleo");
-  return apiClient.post('/', value);
-}
-
 userSignup(value) {
   print("signup");
   return apiClient.post('/dj-rest-auth/registration/', value);
