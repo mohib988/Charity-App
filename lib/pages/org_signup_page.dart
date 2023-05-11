@@ -149,7 +149,6 @@ class OrganizationSignupPageState extends State<OrganizationSignupPage> {
               ElevatedButton(
                 onPressed: () {
                   orgSignUp(_organization);
-                  print('thi');
                 },
                 child: Text(
                   'Sign up',

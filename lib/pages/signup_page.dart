@@ -158,6 +158,38 @@ class SignupPageState extends State<SignupPage> {
                   },
                   child: Text('Sign up'),
                 ),
+                Row(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () async {
+                        try {
+                          final GoogleSignInAccount? googleUser =
+                              await _googleSignIn.signIn();
+                          if (googleUser != null) {
+                            // Successful sign in with Google
+                            print(googleUser.email);
+                          }
+                        } catch (error) {
+                          // Handle sign in error
+                          print(error);
+                        }
+                      },
+                      child: Text('Sign up with Google for user'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () async {
+                        final GoogleSignInAccount? googleUser =
+                            await _googleSignIn.signIn();
+                        if (googleUser != null) {
+                          // Successful sign in with Google
+                          print(googleUser);
+                          print("----------------");
+                        }
+                      },
+                      child: Text('Sign up with Google for org'),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
@@ -174,7 +206,7 @@ class SignupPageState extends State<SignupPage> {
                   onPressed: () {
                     Navigator.of(context).pushNamed("/org");
                   },
-                  child: Text("Go to login")),
+                  child: Text("Go to org")),
             ],
           ),
         ));
