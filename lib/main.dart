@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/drawer.dart';
 import 'package:flutter_application_1/pages/login.dart';
 import 'package:flutter_application_1/pages/org_card.dart';
 import 'package:flutter_application_1/pages/org_signup_page.dart';
@@ -17,15 +18,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: MyTheme.lightTheme(context),
-      debugShowCheckedModeBanner: false,
-      home: OrganizationGrid(),
-      routes: {
-        "/login": (context) => LoginPage(),
-        "/signup": (context) => SignupPage(),
-        "/org": (context) => OrganizationSignupPage(),
-      },
-    );
+        theme: MyTheme.lightTheme(context),
+        debugShowCheckedModeBanner: false,
+        home: OrganizationGrid()
+        // routes: {
+        //   "/login": (context) => LoginPage(),
+        //   "/signup": (context) => SignupPage(),
+        //   "/org": (context) => OrganizationSignupPage(),
+        // },
+        );
   }
 }
 
