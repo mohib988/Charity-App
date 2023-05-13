@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/login.dart';
+import 'package:flutter_application_1/pages/org_card.dart';
 import 'package:flutter_application_1/pages/org_signup_page.dart';
 import 'package:flutter_application_1/pages/signup_page.dart';
 import 'package:flutter_application_1/pages/splash.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: MyTheme.lightTheme(context),
       debugShowCheckedModeBanner: false,
-      home: Splash(),
+      home: OrganizationGrid(),
       routes: {
         "/login": (context) => LoginPage(),
         "/signup": (context) => SignupPage(),

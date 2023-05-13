@@ -148,6 +148,7 @@ class OrganizationSignupPageState extends State<OrganizationSignupPage> {
               SizedBox(height: 26.0),
               ElevatedButton(
                 onPressed: () {
+                  print(_organization.toJson());
                   orgSignUp(_organization);
                 },
                 child: Text(

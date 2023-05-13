@@ -1,0 +1,82 @@
+{
+    "organization":[
+        {
+          "name": "My Organization 1",
+          "address": "123 Main St",
+          "country": "USA",
+          "mission": "To serve the community",
+          "description": "We are a non-profit organization dedicated to improving the lives of people in our community.",
+          "image":"https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"
+        },
+        {
+          "name": "My Organization 2",
+          "address": "456 Elm St",
+          "country": "Canada",
+          "mission": "To promote education",
+          "description": "We are a charity organization that aims to improve the quality of education for students in our community.",
+          "image":"https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"
+        },
+        {
+          "name": "My Organization 3",
+          "address": "789 Oak St",
+          "country": "UK",
+          "mission": "To support healthcare",
+          "description": "We are a non-governmental organization that focuses on improving healthcare services for people in our region.",
+          "image":"https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"
+        },
+        {
+          "name": "My Organization 4",
+          "address": "321 Maple St",
+          "country": "Australia",
+          "mission": "To protect the environment",
+          "description": "We are an environmental advocacy group that works to protect the natural resources of our planet.",
+          "image":"https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"
+        },
+        {
+          "name": "My Organization 5",
+          "address": "654 Pine St",
+          "country": "India",
+          "mission": "To empower women",
+          "description": "We are a non-profit organization that provides education, training, and resources to empower women in our society.",
+          "image":"https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"
+        },
+        {
+          "name": "My Organization 6",
+          "address": "987 Cedar St",
+          "country": "Brazil",
+          "mission": "To fight poverty",
+          "description": "We are a charity organization that aims to eliminate poverty and create economic opportunities for disadvantaged communities.",
+          "image":"https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"
+        },
+        {
+          "name": "My Organization 7",
+          "address": "246 Walnut St",
+          "country": "China",
+          "mission": "To promote cultural exchange",
+          "description": "We are a non-governmental organization that promotes cultural exchange and understanding between people of different backgrounds.",
+          "image":"https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"
+        },
+        {
+          "name": "My Organization 8",
+          "address": "135 Birch St",
+          "country": "France",
+          "mission": "To support refugees",
+          "description": "We are a humanitarian organization that provides assistance and support to refugees and displaced persons in our region.",
+          "image":"https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"
+        },
+        {
+          "name": "My Organization 9",
+          "address": "864 Chestnut St",
+          "country": "Germany",
+          "mission": "To promote animal welfare",
+          "description": "We are an animal welfare organization that advocates for the rights and welfare of animals, and works to improve their living conditions.",
+          "image":"https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"
+        },
+        {
+          "name": "My Organization 10",
+          "address": "579 Poplar St",
+          "country": "Mexico",
+          "mission": "To promote social justice",
+          "description": "We are a social justice organization that works"
+        }]      
+}
