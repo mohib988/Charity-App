@@ -1,4 +1,4 @@
-import '../../pages/org_signup_page.dart';
+import '../../models/org.dart';
 import 'package:http/http.dart' as http;
 
 Future<http.Response> orgSignUp(OrganizationInfo formData) async {
