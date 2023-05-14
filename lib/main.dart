@@ -1,21 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/login.dart';
+import 'package:flutter_application_1/pages/org_card.dart';
+import 'package:flutter_application_1/pages/org_signup_page.dart';
+import 'package:flutter_application_1/pages/signup_page.dart';
+import 'package:flutter_application_1/pages/splash.dart';
+import 'package:redux/redux.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+
+import 'AppTheme/app_theme.dart';
+import 'ReduxStore/reducer.dart';
+import 'ReduxStore/states.dart';
 
 void main() {
-  runApp(MyApp());
+  final store = Store<AppState>(
+    appReducer,
+    initialState: AppState.initialState(),
+  );
+  runApp(MyApp(store: store));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+  final Store<AppState> store;
+  const MyApp({super.key, required this.store});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      routes: {"/": (context) => LoginPage()},
+    return StoreProvider<AppState>(
+      store: store,
+      child: MaterialApp(
+        theme: MyTheme.lightTheme(context),
+        debugShowCheckedModeBanner: false,
+        home: OrganizationGrid(),
+        routes: {
+          "/login": (context) => LoginPage(),
+          "/signup": (context) => SignupPage(),
+          "/org": (context) => OrganizationSignupPage(),
+        },
+      ),
     );
   }
 }
+
+// chaging your comment to check if fork and git push pull works 
+
+//Another comment
+
+
 // class MyApp extends StatelessWidget {
 //   const MyApp({super.key});
 
