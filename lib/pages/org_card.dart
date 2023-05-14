@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/pages/drawer.dart';
 import 'dart:convert';
 
 // import 'package:flutter_application_1/pages/org_signup_page.dart';
@@ -98,6 +99,7 @@ class _OrganizationGridState extends State<OrganizationGrid> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Organization Grid'),
+        centerTitle: true,
       ),
       body: FutureBuilder(
         future: loadData(),
@@ -117,6 +119,7 @@ class _OrganizationGridState extends State<OrganizationGrid> {
           }
         },
       ),
+      drawer: DrawerContainer(),
     );
   }
 }

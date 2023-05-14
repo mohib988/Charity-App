@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/drawer.dart';
 import 'package:flutter_application_1/pages/login.dart';
 import 'package:flutter_application_1/pages/org_card.dart';
 import 'package:flutter_application_1/pages/org_signup_page.dart';
@@ -24,6 +25,18 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key, required this.store});
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
+    return MaterialApp(
+        theme: MyTheme.lightTheme(context),
+        debugShowCheckedModeBanner: false,
+        home: OrganizationGrid()
+        // routes: {
+        //   "/login": (context) => LoginPage(),
+        //   "/signup": (context) => SignupPage(),
+        //   "/org": (context) => OrganizationSignupPage(),
+        // },
+        );
+=======
     return StoreProvider<AppState>(
       store: store,
       child: MaterialApp(
@@ -37,6 +50,7 @@ class MyApp extends StatelessWidget {
         },
       ),
     );
+>>>>>>> 7ac7ce696bc48a36b675c7f16c4d977ef7182c88
   }
 }
 
