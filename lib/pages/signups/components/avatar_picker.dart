@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AvatarPicker extends StatefulWidget {
-  @override
   final Function(File image) onImagePicked;
   const AvatarPicker({Key? key, required this.onImagePicked}) : super(key: key);
 
+  @override
   AvatarPickerState createState() => AvatarPickerState();
 }
 

@@ -1,6 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/login.dart';
 import 'package:flutter_application_1/urls/urls.dart';
 
 import 'package:google_sign_in/google_sign_in.dart';
