@@ -1,13 +1,11 @@
-import 'dart:convert';
 import 'dart:io';
-import 'package:flutter_application_1/pages/avatar_picker.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:flutter_application_1/pages/signups/components/avatar_picker.dart';
 
 import 'package:flutter/material.dart';
 // import 'package:flutter_application_1/urls/urls.dart';
 
-import '../models/org.dart';
-import '../urls/UrlForPics/url_for_picture.dart';
+import '../../models/org.dart';
+import '../../urls/UrlForPics/url_for_picture.dart';
 
 class OrganizationSignupPage extends StatefulWidget {
   @override

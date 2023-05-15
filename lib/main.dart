@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/drawer.dart';
-import 'package:flutter_application_1/pages/login.dart';
-import 'package:flutter_application_1/pages/org_card.dart';
-import 'package:flutter_application_1/pages/org_signup_page.dart';
-import 'package:flutter_application_1/pages/signup_page.dart';
-import 'package:flutter_application_1/pages/splash.dart';
+import 'package:flutter_application_1/pages/OrganizationProfilePage/org_profile_page.dart';
+import 'package:flutter_application_1/pages/drawer/drawer.dart';
+import 'package:flutter_application_1/pages/login/login.dart';
+import 'package:flutter_application_1/pages/homepage/org_card.dart';
+import 'package:flutter_application_1/pages/signups/org_signup_page.dart';
+import 'package:flutter_application_1/pages/signups/signup_page.dart';
+import 'package:flutter_application_1/pages/splash/splash.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
@@ -25,24 +26,18 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key, required this.store});
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    return MaterialApp(
-        theme: MyTheme.lightTheme(context),
-        debugShowCheckedModeBanner: false,
-        home: OrganizationGrid()
-        // routes: {
-        //   "/login": (context) => LoginPage(),
-        //   "/signup": (context) => SignupPage(),
-        //   "/org": (context) => OrganizationSignupPage(),
-        // },
-        );
-=======
     return StoreProvider<AppState>(
       store: store,
       child: MaterialApp(
         theme: MyTheme.lightTheme(context),
         debugShowCheckedModeBanner: false,
-        home: OrganizationGrid(),
+        home: CharityOrganizationProfile(
+          imageUrl:
+              "https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80",
+          mission: "this is my mission",
+          country: "Pakistan",
+          address: "lorem erere  jkljklj ",
+        ),
         routes: {
           "/login": (context) => LoginPage(),
           "/signup": (context) => SignupPage(),
@@ -50,7 +45,6 @@ class MyApp extends StatelessWidget {
         },
       ),
     );
->>>>>>> 7ac7ce696bc48a36b675c7f16c4d977ef7182c88
   }
 }
 

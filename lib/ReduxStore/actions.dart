@@ -4,3 +4,7 @@ class SetOrganizationAction {
   final OrganizationInfo organization;
   SetOrganizationAction(this.organization);
 }
+class SetOrganizationListAction {
+  final List<OrganizationInfo> organizationList ;
+  SetOrganizationListAction(this.organizationList);
+}

@@ -1,9 +1,5 @@
-import 'dart:convert';
-
 import "package:flutter/material.dart";
-import 'package:flutter_application_1/pages/signup_page.dart';
-import '../urls/urls.dart';
-import 'package:http/http.dart' as http;
+import '../../urls/urls.dart';
 
 class User {
   String username;
