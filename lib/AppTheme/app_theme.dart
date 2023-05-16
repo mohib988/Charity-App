@@ -15,7 +15,7 @@ class MyTheme {
           onSecondary: Colors.black,
           error: Colors.red,
           onError: Colors.red,
-          background: Colors.red,
+          background: Color.fromRGBO(255, 201, 75, 1),
           onBackground: Color.fromRGBO(255, 179, 0, 1),
           surface: Colors.red,
           onSurface: Colors.red));

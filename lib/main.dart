@@ -26,18 +26,6 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key, required this.store});
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    return MaterialApp(
-        theme: MyTheme.lightTheme(context),
-        debugShowCheckedModeBanner: false,
-        home: OrganizationGrid()
-        // routes: {
-        //   "/login": (context) => LoginPage(),
-        //   "/signup": (context) => SignupPage(),
-        //   "/org": (context) => OrganizationSignupPage(),
-        // },
-        );
-=======
     return StoreProvider<AppState>(
       store: store,
       child: MaterialApp(
@@ -57,7 +45,6 @@ class MyApp extends StatelessWidget {
         },
       ),
     );
->>>>>>> 9b79ca9f3371c9d1632e0d2ae8b4299ba3e25312
   }
 }
 

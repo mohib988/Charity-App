@@ -1,5 +1,6 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/AppTheme/app_theme.dart';
 
 import 'components/donation_button.dart';
 
@@ -21,47 +22,61 @@ class CharityOrganizationProfile extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Charity Organization Profile'),
+        centerTitle: true,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: EdgeInsets.all(16),
-            child: Row(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.network(
-                    imageUrl,
-                    width: 220,
-                    height: 220,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        mission,
-                        style: Theme.of(context).textTheme.titleLarge,
+            child: Container(
+              color: Theme.of(context).colorScheme.background,
+              height: 300,
+              child: Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(left: 20.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.network(
+                        imageUrl,
+                        width: 220,
+                        height: 220,
+                        fit: BoxFit.cover,
                       ),
-                      SizedBox(height: 8),
-                      Row(
-                        children: [
-                          Icon(Icons.location_on, size: 16),
-                          SizedBox(width: 8),
-                          Text(
-                            '$country\n$address',
-                            style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                  ),
+                  SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(top: 40.0),
+                          child: Text('Mission Statement',
+                              style: Theme.of(context).textTheme.displaySmall),
+                        ),
+                        Text(mission,
+                            style: Theme.of(context).textTheme.titleLarge),
+                        SizedBox(height: 8),
+                        Container(
+                          margin: EdgeInsets.only(top: 100.0),
+                          child: Row(
+                            children: [
+                              Icon(Icons.location_on, size: 16),
+                              SizedBox(width: 8),
+                              Text(
+                                '$country\n$address',
+                                style: Theme.of(context).textTheme.bodyLarge,
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Padding(
@@ -95,6 +110,23 @@ class CharityOrganizationProfile extends StatelessWidget {
               ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Container(
+              color: Theme.of(context).colorScheme.background,
+              height: 100,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 40,
+                  ),
+                  Center(
+                    child: Text('Helping Hands. All rights reserved'),
+                  )
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );
