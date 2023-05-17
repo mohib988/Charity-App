@@ -8,6 +8,7 @@ import 'package:flutter_application_1/pages/signups/signup_page.dart';
 import 'package:flutter_application_1/pages/splash/splash.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_application_1/pages/donationHistoryPage/donationHistoryPage.dart';
 
 import 'AppTheme/app_theme.dart';
 import 'ReduxStore/reducer.dart';
@@ -31,12 +32,15 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         theme: MyTheme.lightTheme(context),
         debugShowCheckedModeBanner: false,
-        home: CharityOrganizationProfile(
-          imageUrl:
-              "https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80",
-          mission: "this is my mission",
-          country: "Pakistan",
-          address: "lorem erere  jkljklj ",
+        home: UserProfilePage(
+          userName: 'Usman Khalid',
+          donations: [
+            Donation(title: 'Clothes', dateTime: '2023-05-15 10:00 AM'),
+            Donation(title: 'Money', dateTime: '2023-05-16 02:30 PM'),
+            Donation(title: 'Food', dateTime: '2023-05-17 09:45 AM'),
+            Donation(title: 'Clothes', dateTime: '2023-05-17 09:45 AM'),
+            Donation(title: 'Money', dateTime: '2023-05-18 01:00 PM'),
+          ],
         ),
         routes: {
           "/login": (context) => LoginPage(),
