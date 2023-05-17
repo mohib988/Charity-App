@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/OrganizationProfilePage/org_profile_page.dart';
+import 'package:flutter_application_1/pages/donationHistoryPage/donationHistoryPage.dart';
 import 'package:flutter_application_1/pages/drawer/drawer.dart';
 import 'package:flutter_application_1/pages/login/login.dart';
 import 'package:flutter_application_1/pages/homepage/org_card.dart';
@@ -38,10 +39,13 @@ class MyApp extends StatelessWidget {
         //   country: "Pakistan",
         //   address: "lorem erere  jkljklj ",
         // ),
+        home: UserProfilePage(
+            userName: "mohib",
+            donations: [Donation(title: "dfd", dateTime: "dfd")]),
         routes: {
           "/login": (context) => LoginPage(),
           "/signup": (context) => SignupPage(),
-          "/": (context) => OrganizationSignupPage(),
+          "/jk": (context) => OrganizationSignupPage(),
         },
       ),
     );
