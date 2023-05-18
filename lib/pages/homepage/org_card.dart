@@ -1,6 +1,5 @@
 // ignore: avoid_web_libraries_in_flutter
-import 'dart:js';
-import 'dart:js_interop';
+// import 'dart:js';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -34,12 +33,12 @@ loadOrganizationList() async {
   final orgList = orgData
       .map<OrganizationInfo>((json) => OrganizationInfo.fromJson(json))
       .toList();
-  final store = StoreProvider.of<AppState>(context as BuildContext);
-  store.dispatch(SetOrganizationListAction(orgList));
+  // final store = StoreProvider.of<AppState>(context as BuildContext);
+  // store.dispatch(SetOrganizationListAction(orgList));
 
   // Assign the list of organizations to the static items property of the OrganizationInfo class
-  print(store);
-  print(orgList[0].toJS);
+  // print(store);
+  // print(orgList[0].toJS);
   return orgList;
   // OrganizationInfo.items = orgList;
 }
