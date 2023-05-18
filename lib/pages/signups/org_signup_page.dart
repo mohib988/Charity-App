@@ -3,7 +3,7 @@ import 'package:flutter_application_1/pages/signups/components/avatar_picker.dar
 
 import 'package:flutter/material.dart';
 // import 'package:flutter_application_1/urls/urls.dart';
-
+// {name: jkj, address: jkj, country: jk, mission: jjiji, description: ijikj, image: /data/user/0/com.example.flutter_application_1/cache/3ae10371-3670-49dc-8e83-e0a0d3eb8ff6/IMG_20230511_202018.jpg}
 import '../../models/org.dart';
 import '../../urls/UrlForPics/url_for_picture.dart';
 

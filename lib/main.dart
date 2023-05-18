@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         theme: MyTheme.lightTheme(context),
         debugShowCheckedModeBanner: false,
+<<<<<<< Updated upstream
         home: UserProfilePage(
           userName: 'Usman Khalid',
           donations: [
@@ -46,6 +47,22 @@ class MyApp extends StatelessWidget {
           "/login": (context) => LoginPage(),
           "/signup": (context) => SignupPage(),
           "/org": (context) => OrganizationSignupPage(),
+=======
+        // home: CharityOrganizationProfile(
+        //   imageUrl:
+        //       "https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80",
+        //   mission: "this is my mission",
+        //   country: "Pakistan",
+        //   address: "lorem erere  jkljklj ",
+        // ),
+        // home: UserProfilePage(
+        //     userName: "mohib",
+        //     donations: [Donation(title: "dfd", dateTime: "dfd")]),
+        routes: {
+          "/login": (context) => LoginPage(),
+          "/signup": (context) => SignupPage(),
+          "/": (context) => OrganizationSignupPage(),
+>>>>>>> Stashed changes
         },
       ),
     );
