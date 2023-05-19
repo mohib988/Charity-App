@@ -56,7 +56,7 @@ class _OrganizationGridState extends State<OrganizationGrid> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Organization Grid'),
+        title: Text('Organizations'),
         centerTitle: true,
       ),
       body: FutureBuilder(

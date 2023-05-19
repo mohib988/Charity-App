@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/org.dart';
+import 'package:flutter_application_1/pages/OrganizationProfilePage/org_profile_page.dart';
+import 'package:flutter_application_1/pages/homepage/org_card.dart';
+import 'package:flutter_application_1/pages/signups/org_signup_page.dart';
 import 'package:flutter_application_1/urls/urls.dart';
 
 import 'package:google_sign_in/google_sign_in.dart';
@@ -152,7 +156,20 @@ class SignupPageState extends State<SignupPage> {
                   onPressed: () {
                     // Implement signup logic here
                     print(_user.userType);
-                    userSignup(_user);
+                    // userSignup(_user);
+                    userSignup(() {
+                      if (_user.userType == "User") {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => OrganizationGrid()),
+                        );
+                      } else if (_user.userType == "Organization" ){
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => OrganizationSignupPage()),
+                        );
+                      }
+                    }, _user);
                   },
                   child: Text('Sign up'),
                 ),

@@ -32,16 +32,17 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
             theme: MyTheme.lightTheme(context),
             debugShowCheckedModeBanner: false,
-            home: UserProfilePage(
-              userName: 'Usman Khalid',
-              donations: [
-                Donation(title: 'Clothes', dateTime: '2023-05-15 10:00 AM'),
-                Donation(title: 'Money', dateTime: '2023-05-16 02:30 PM'),
-                Donation(title: 'Food', dateTime: '2023-05-17 09:45 AM'),
-                Donation(title: 'Clothes', dateTime: '2023-05-17 09:45 AM'),
-                Donation(title: 'Money', dateTime: '2023-05-18 01:00 PM'),
-              ],
-            ),
+            home: Splash(),
+            // home: UserProfilePage(
+            //   userName: 'Usman Khalid',
+            //   donations: [
+            //     Donation(title: 'Clothes', dateTime: '2023-05-15 10:00 AM'),
+            //     Donation(title: 'Money', dateTime: '2023-05-16 02:30 PM'),
+            //     Donation(title: 'Food', dateTime: '2023-05-17 09:45 AM'),
+            //     Donation(title: 'Clothes', dateTime: '2023-05-17 09:45 AM'),
+            //     Donation(title: 'Money', dateTime: '2023-05-18 01:00 PM'),
+            //   ],
+            // ),
             routes: {
               "/login": (context) => LoginPage(),
               "/signup": (context) => SignupPage(),
