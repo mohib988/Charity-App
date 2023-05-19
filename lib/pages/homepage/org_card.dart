@@ -17,7 +17,7 @@ import '../../models/org.dart';
 
 // ...
 
-loadOrganizationList() async {
+loadOrganizationList(BuildContext context) async {
   // Wait for 2 seconds to simulate a delay (for testing purposes)
   await Future.delayed(Duration(seconds: 2));
 
@@ -33,11 +33,12 @@ loadOrganizationList() async {
   final orgList = orgData
       .map<OrganizationInfo>((json) => OrganizationInfo.fromJson(json))
       .toList();
-  // final store = StoreProvider.of<AppState>(context as BuildContext);
-  // store.dispatch(SetOrganizationListAction(orgList));
+
+  final store = StoreProvider.of<AppState>(context);
+  store.dispatch(SetOrganizationListAction(orgList));
 
   // Assign the list of organizations to the static items property of the OrganizationInfo class
-  // print(store);
+  print(store.state.organizationList[0].country);
   // print(orgList[0].toJS);
   return orgList;
   // OrganizationInfo.items = orgList;
@@ -60,7 +61,7 @@ class _OrganizationGridState extends State<OrganizationGrid> {
         centerTitle: true,
       ),
       body: FutureBuilder(
-        future: loadOrganizationList(),
+        future: loadOrganizationList(context),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List<OrganizationInfo> orgList =
