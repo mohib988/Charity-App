@@ -47,6 +47,8 @@ class MyApp extends StatelessWidget {
               "/login": (context) => LoginPage(),
               "/signup": (context) => SignupPage(),
               "/org": (context) => OrganizationSignupPage(),
+              "/": (context) => OrganizationGrid(),
+              "/profile": (context) => OrganizationProfile(),
             }));
   }
 }

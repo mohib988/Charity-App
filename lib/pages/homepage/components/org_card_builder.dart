@@ -1,6 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/ReduxStore/actions.dart';
+import 'package:flutter_application_1/ReduxStore/states.dart';
+import 'package:flutter_application_1/ReduxStore/store.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 
+import '../../../main.dart';
 import '../../../models/org.dart';
 
 class BuildCard extends StatefulWidget {
@@ -30,7 +35,15 @@ class _BuildCardState extends State<BuildCard> {
           side: BorderSide(color: borderColor, width: 1),
           borderRadius: BorderRadius.circular(8),
         ),
-        child: Container(
+        child: InkWell(
+          onTap: () {
+            final store = StoreProvider.of<AppState>(context);
+            store.dispatch(SetOrganizationAction(widget.org));
+            Navigator.pushNamed(context, "/profile");
+            Future.delayed(Duration(seconds: 2));
+            store.dispatch(SetOrganizationAction(widget.org));
+            store.dispatch(SetIsLoadingAction(false));
+          },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.max,
