@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_application_1/pages/homepage/org_card.dart';
 import '../../urls/urls.dart';
 
 class User {
@@ -169,7 +170,13 @@ class _LoginPageState extends State<LoginPage> {
                 // AlertDialog(
                 //   content: Text(_textFieldController.text),
                 // );
-                login((user));
+// Call the login function and provide the navigateToOrganizationGrid callback
+                login(() {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => OrganizationGrid()),
+                  );
+                }, user);
               },
               child: Text("Login"),
               onHover: (value) => {print(_buttonController.value)},

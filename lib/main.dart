@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
             theme: MyTheme.lightTheme(context),
             debugShowCheckedModeBanner: false,
+            home: Splash(),
             // home: UserProfilePage(
             //   userName: 'Usman Khalid',
             //   donations: [
@@ -46,7 +47,7 @@ class MyApp extends StatelessWidget {
               "/login": (context) => LoginPage(),
               "/signup": (context) => SignupPage(),
               "/org": (context) => OrganizationSignupPage(),
-              "/": (context) => OrganizationGrid(),
+          //    "/": (context) => OrganizationGrid(),
               "/profile": (context) => OrganizationProfile(),
             }));
   }
