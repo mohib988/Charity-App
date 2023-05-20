@@ -5,9 +5,11 @@ import 'package:http/http.dart' as http;
 
 class AvatarPicker extends StatefulWidget {
   final Function(File image) onImagePicked;
-  
+  final Function(String response) setResponse;
 
-  const AvatarPicker({Key? key, required this.onImagePicked}) : super(key: key);
+  const AvatarPicker(
+      {Key? key, required this.onImagePicked, required this.setResponse})
+      : super(key: key);
 
   @override
   AvatarPickerState createState() => AvatarPickerState();
@@ -23,6 +25,7 @@ class AvatarPickerState extends State<AvatarPicker> {
 
     if (pickedFile != null) {
       // Send the image to Cloudinary
+      widget.setResponse("dfdf");
       await uploadImageToCloudinary(pickedFile.path);
 
       setState(() {
@@ -47,6 +50,7 @@ class AvatarPickerState extends State<AvatarPicker> {
     var response = await request.send();
     if (response.statusCode == 200) {
       var responseString = await response.stream.bytesToString();
+
       print('Response: $responseString');
       print('Image uploaded successfully!');
     } else {
@@ -57,7 +61,9 @@ class AvatarPickerState extends State<AvatarPicker> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: getImage,
+      onTap: () {
+        getImage();
+      },
       child: CircleAvatar(
         backgroundImage: image != File("") ? FileImage(image) : null,
         radius: 50,

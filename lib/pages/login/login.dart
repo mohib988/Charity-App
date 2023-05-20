@@ -1,13 +1,6 @@
 import "package:flutter/material.dart";
+import '../../models/user.dart';
 import '../../urls/urls.dart';
-
-// Future<http.Response> greet(String email) {
-//   var map = {'email': email};
-//   return http.post(
-//     Uri.parse('http://localhost:8000/'),
-//     body: map,
-//   );
-// }
 
 class LoginPage extends StatefulWidget {
   @override
@@ -69,7 +62,6 @@ class _LoginPageState extends State<LoginPage> {
               label: 'Username',
               placeholder: 'Enter your username',
             ),
-
             SizedBox(
               height: 10,
             ),
@@ -78,35 +70,6 @@ class _LoginPageState extends State<LoginPage> {
               label: 'Email',
               placeholder: 'Enter your email',
             ),
-
-            // SizedBox(
-            //   width: 300,
-            //   child: TextFormField(
-            //     controller: _textFieldController,
-            //     decoration: InputDecoration(
-            //       border: OutlineInputBorder(
-            //           borderSide: BorderSide(color: Colors.grey)),
-            //       hintText: "Enter your email",
-            //       hintStyle: TextStyle(color: Colors.brown),
-            //       contentPadding: EdgeInsets.all(29.0),
-            //     ),
-            //     onChanged: (value) => {
-            //       setState(
-            //         () {
-            //           user.email = value;
-            //           print(user.email);
-            //         },
-
-            //         // validator: (value) {
-            //         //   if (value == null) {
-            //         //     return "this is it";
-            //         //   }
-            //         //   return "this";
-            //         // },
-            //       ),
-            //     },
-            //   ),
-            // ),
             SizedBox(
               height: 10,
             ),
@@ -115,49 +78,15 @@ class _LoginPageState extends State<LoginPage> {
               label: 'Password',
               placeholder: 'Enter your password',
             ),
-            // SizedBox(
-            //   width: 300,
-            //   child: TextFormField(
-            //     controller: _textFieldController,
-            //     decoration: InputDecoration(
-            //       border: OutlineInputBorder(
-            //           borderSide: BorderSide(color: Colors.grey)),
-            //       hintText: "Enter your Password",
-            //       hintStyle: TextStyle(color: Colors.brown),
-            //       contentPadding: EdgeInsets.all(29.0),
-            //     ),
-            //     onChanged: (value) => {
-            //       setState(
-            //         () {
-            //           user.password = value;
-            //           print(user.password);
-            //         },
-
-            //         // validator: (value) {
-            //         //   if (value == null) {
-            //         //     return "this is it";
-            //         //   }
-            //         //   return "this";
-            //         // },
-            //       ),
-            //     },
-            //   ),
-            // ),
             SizedBox(
               height: 50,
             ),
             ElevatedButton(
               statesController: _buttonController,
               onPressed: () {
-                // AlertDialog(
-                //   content: Text(_textFieldController.text),
-                // );
 // Call the login function and provide the navigateToOrganizationGrid callback
                 login(() {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => OrganizationGrid()),
-                  );
+                  Navigator.pushNamed(context, "/home");
                 }, user);
               },
               child: Text("Login"),
@@ -177,12 +106,3 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-
-                // greet(_textFieldController.text).then((response) => showDialog(
-                //     context: context,
-                //     builder: (BuildContext context) {
-                //       return AlertDialog(
-                //         content: Text(response.body.toString()),
-                //       );
-                //     },
-                //   ));

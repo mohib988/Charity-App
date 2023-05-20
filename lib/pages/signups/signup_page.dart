@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/models/org.dart';
-import 'package:flutter_application_1/pages/OrganizationProfilePage/org_profile_page.dart';
-import 'package:flutter_application_1/pages/homepage/org_card.dart';
-import 'package:flutter_application_1/pages/signups/org_signup_page.dart';
 import 'package:flutter_application_1/urls/urls.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 
 import 'package:google_sign_in/google_sign_in.dart';
+
+import '../../models/sign_model.dart';
 
 const List<String> scopes = <String>[
   'email',
@@ -17,42 +15,6 @@ GoogleSignIn _googleSignIn = GoogleSignIn(
   // clientId: 'your-client_id.apps.googleusercontent.com',
   scopes: scopes,
 );
-
-class SignupUser {
-  SignupUser({
-    this.username = '',
-    this.email = '',
-    this.password = '',
-    this.confirmPassword = '',
-    this.userType = 'User', // added userType initialization
-  });
-
-  factory SignupUser.fromJson(Map<String, dynamic> json) {
-    return SignupUser(
-      username: json['name'] ?? '',
-      email: json['email'] ?? '',
-      password: json['password'] ?? '',
-      confirmPassword: json['confirmPassword'] ?? '',
-      userType: json['userType'] ?? 'User', // added userType initialization
-    );
-  }
-
-  String confirmPassword = '';
-  String email = '';
-  String password = '';
-  String userType = ''; // added userType field
-  String username = '';
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['username'] = username;
-    data['email'] = email;
-    data['password1'] = password;
-    data['password2'] = confirmPassword;
-    data['user_type'] = userType; // added userType serialization
-    return data;
-  }
-}
 
 class SignupPage extends StatefulWidget {
   @override
@@ -161,21 +123,14 @@ class SignupPageState extends State<SignupPage> {
                     // userSignup(_user);
                     if (_user.userType == 'User') {
                       userSignup(() {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => OrganizationGrid()),
-                        );
+                        Navigator.pushNamed(context, "/home");
                       }, _user);
                     } else {
                       await signupSession.set("Org_signup_info", _user);
                       print(signupSession.get("Org_signup_info"));
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => OrganizationSignupPage()),
-                      );
+                      Navigator.pushNamed(context, "/orgSignup");
                     }
+
                     // userSignup(() async {
                     //   if (_user.userType == "User") {
                     //   } else if (_user.userType == "Organization") {}
@@ -233,7 +188,7 @@ class SignupPageState extends State<SignupPage> {
                   child: Text("Go to login")),
               TextButton(
                   onPressed: () {
-                    Navigator.of(context).pushNamed("/org");
+                    Navigator.of(context).pushNamed("/orgSignup");
                   },
                   child: Text("Go to org")),
             ],

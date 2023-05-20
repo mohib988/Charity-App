@@ -1,14 +1,14 @@
 import 'dart:io';
 import 'package:cloudinary_flutter/cloudinary_context.dart';
-import 'package:cloudinary_flutter/image/cld_image.dart';
 import 'package:cloudinary_url_gen/cloudinary.dart';
 import 'package:flutter_application_1/pages/signups/components/avatar_picker.dart';
-
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_application_1/urls/urls.dart';
 // {name: jkj, address: jkj, country: jk, mission: jjiji, description: ijikj, image: /data/user/0/com.example.flutter_application_1/cache/3ae10371-3670-49dc-8e83-e0a0d3eb8ff6/IMG_20230511_202018.jpg}
 import '../../models/org.dart';
 import '../../urls/UrlForPics/url_for_picture.dart';
+import 'actions/singup_action.dart';
 
 class OrganizationSignupPage extends StatefulWidget {
   @override
@@ -17,17 +17,7 @@ class OrganizationSignupPage extends StatefulWidget {
 
 class OrganizationSignupPageState extends State<OrganizationSignupPage> {
   late final OrganizationInfo _organization = OrganizationInfo(image: File(""));
-
-  Function(dynamic value)? _getOnChangedFunction(String type) {
-    final fieldMap = {
-      'name': (value) => _organization.name = value,
-      'address': (value) => _organization.address = value,
-      'country': (value) => _organization.country = value,
-      'mission': (value) => _organization.mission = value,
-      'description': (value) => _organization.description = value,
-    };
-    return fieldMap[type];
-  }
+  late final String response;
 
   Widget _buildTextField(
       {required String type,
@@ -42,14 +32,15 @@ class OrganizationSignupPageState extends State<OrganizationSignupPage> {
               borderSide: BorderSide(color: Colors.grey, width: 1)),
           hintText: placeholder,
         ),
-        onChanged: _getOnChangedFunction(type),
+        onChanged: getOnChangedFunction(_organization, type),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    CloudinaryContext.cloudinary = Cloudinary.fromCloudName(cloudName: 'djecqwc0z');
+    CloudinaryContext.cloudinary =
+        Cloudinary.fromCloudName(cloudName: 'djecqwc0z');
     return Scaffold(
       appBar: AppBar(
         title: Text('Charity Signup'),
@@ -60,7 +51,6 @@ class OrganizationSignupPageState extends State<OrganizationSignupPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              
               Padding(
                 padding: const EdgeInsets.all(32.0),
                 child: AvatarPicker(
@@ -69,12 +59,17 @@ class OrganizationSignupPageState extends State<OrganizationSignupPage> {
                       _organization.image = pickedImage;
                     });
                   },
+                  setResponse: (String res) {
+                    setState(() {
+                      res = response;
+                    });
+                  },
                 ),
               ),
-            //   CldImageWidget(
-            //   publicId: "dog",
-            // ),
-            
+              //   CldImageWidget(
+              //   publicId: "dog",
+              // ),
+
               _buildTextField(
                 type: 'name',
                 label: 'Organization Name',
@@ -87,11 +82,16 @@ class OrganizationSignupPageState extends State<OrganizationSignupPage> {
                 placeholder: 'Enter your organization\'s address',
               ),
               SizedBox(height: 16.0),
-              _buildTextField(
-                type: 'country',
-                label: 'Country',
-                placeholder: 'Enter your organization\'s country',
-              ),
+              // showCountryPicker(
+              //   context: context,
+              //   showPhoneCode:
+              //       true, // optional. Shows phone code before the country name.
+              //   onSelect: (Country country) {
+              //     setState(() {
+              //       _organization.country = country.displayName;
+              //     });
+              //   },
+              // ),
               SizedBox(height: 16.0),
               _buildTextField(
                 type: 'mission',
@@ -107,8 +107,10 @@ class OrganizationSignupPageState extends State<OrganizationSignupPage> {
               SizedBox(height: 26.0),
               ElevatedButton(
                 onPressed: () {
+                  print(_organization.image.path);
+                  print(response);
                   print(_organization.toJson());
-                  orgSignUp(_organization);
+                  // orgSignUp(_organization);
                 },
                 child: Text(
                   'Sign up',

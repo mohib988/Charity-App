@@ -5,14 +5,15 @@ import 'actions.dart';
 
 AppState appReducer(AppState state, dynamic action) {
   return AppState(
-      organization: organizationReducer(state.organization, action),
+      currentOrganization:
+          organizationReducer(state.currentOrganization, action),
       organizationList: organizationListReducer(state.organizationList, action),
       isLoading: isLoadingReducer(state.isLoading, action));
 }
 
 OrganizationInfo organizationReducer(OrganizationInfo state, dynamic action) {
   if (action is SetOrganizationAction) {
-    return action.organization;
+    return action.currentOrganization;
   }
   return state;
 }

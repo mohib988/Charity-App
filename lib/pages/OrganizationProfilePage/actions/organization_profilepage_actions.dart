@@ -6,5 +6,5 @@ import '../../../ReduxStore/states.dart';
 loadProfile(BuildContext context) async {
   await Future.delayed(Duration(seconds: 2));
   final store = StoreProvider.of<AppState>(context);
-  return store.state.organization;
+  return store.state.currentOrganization;
 }
