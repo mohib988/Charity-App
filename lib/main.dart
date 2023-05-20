@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/OrganizationProfilePage/org_profile_page.dart';
-import 'package:flutter_application_1/pages/drawer/drawer.dart';
 import 'package:flutter_application_1/pages/login/login.dart';
 import 'package:flutter_application_1/pages/homepage/org_card.dart';
 import 'package:flutter_application_1/pages/signups/org_signup_page.dart';
 import 'package:flutter_application_1/pages/signups/signup_page.dart';
-import 'package:flutter_application_1/pages/splash/splash.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:flutter_application_1/pages/donationHistoryPage/donationHistoryPage.dart';
 
 import 'AppTheme/app_theme.dart';
 import 'ReduxStore/reducer.dart';

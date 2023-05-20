@@ -1,22 +1,6 @@
 import "package:flutter/material.dart";
+import '../../models/user.dart';
 import '../../urls/urls.dart';
-
-class User {
-  String username;
-  String email;
-  String password;
-  User(this.username, this.email, this.password);
-
-  User.fromJson(Map<String, dynamic> json)
-      : username = json['username'],
-        email = json['email'],
-        password = json['password'];
-  Map<String, dynamic> toJson() => {
-        'username': username,
-        'email': email,
-        'password': password,
-      };
-}
 
 // Future<http.Response> greet(String email) {
 //   var map = {'email': email};

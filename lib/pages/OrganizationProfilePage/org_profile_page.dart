@@ -1,19 +1,11 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/AppTheme/app_theme.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 
-import '../../ReduxStore/states.dart';
 import '../../models/org.dart';
+import 'actions/organization_profilepage_actions.dart';
 import 'components/donation_button.dart';
 
 class OrganizationProfile extends StatelessWidget {
-  loadProfile(BuildContext context) async {
-    await Future.delayed(Duration(seconds: 2));
-    final store = StoreProvider.of<AppState>(context);
-    return store.state.organization;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
