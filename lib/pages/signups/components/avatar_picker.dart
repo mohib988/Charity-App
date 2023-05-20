@@ -4,12 +4,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 
 class AvatarPicker extends StatefulWidget {
-  final Function(File image) onImagePicked;
-  final Function(String response) setResponse;
+  final Function(File image, String response) onImagePicked;
 
-  const AvatarPicker(
-      {Key? key, required this.onImagePicked, required this.setResponse})
-      : super(key: key);
+  const AvatarPicker({Key? key, required this.onImagePicked}) : super(key: key);
 
   @override
   AvatarPickerState createState() => AvatarPickerState();
@@ -18,19 +15,17 @@ class AvatarPicker extends StatefulWidget {
 class AvatarPickerState extends State<AvatarPicker> {
   File image = File("");
   final picker = ImagePicker();
-
+  String a = 'eere';
   Future getImage() async {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     print("img is $pickedFile");
 
     if (pickedFile != null) {
       // Send the image to Cloudinary
-      widget.setResponse("dfdf");
       await uploadImageToCloudinary(pickedFile.path);
 
       setState(() {
         image = File(pickedFile.path);
-        widget.onImagePicked(image);
       });
     } else {
       print('No image selected.');
@@ -50,6 +45,7 @@ class AvatarPickerState extends State<AvatarPicker> {
     var response = await request.send();
     if (response.statusCode == 200) {
       var responseString = await response.stream.bytesToString();
+      widget.onImagePicked(image, responseString);
 
       print('Response: $responseString');
       print('Image uploaded successfully!');

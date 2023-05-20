@@ -10,6 +10,11 @@ import '../../models/org.dart';
 import '../../urls/UrlForPics/url_for_picture.dart';
 import 'actions/singup_action.dart';
 
+class Response {
+  String response;
+  Response(this.response);
+}
+
 class OrganizationSignupPage extends StatefulWidget {
   @override
   OrganizationSignupPageState createState() => OrganizationSignupPageState();
@@ -17,7 +22,7 @@ class OrganizationSignupPage extends StatefulWidget {
 
 class OrganizationSignupPageState extends State<OrganizationSignupPage> {
   late final OrganizationInfo _organization = OrganizationInfo(image: File(""));
-  late final String response;
+  late final Response response = Response("");
 
   Widget _buildTextField(
       {required String type,
@@ -54,14 +59,10 @@ class OrganizationSignupPageState extends State<OrganizationSignupPage> {
               Padding(
                 padding: const EdgeInsets.all(32.0),
                 child: AvatarPicker(
-                  onImagePicked: (File pickedImage) {
+                  onImagePicked: (File pickedImage, String res) {
                     setState(() {
                       _organization.image = pickedImage;
-                    });
-                  },
-                  setResponse: (String res) {
-                    setState(() {
-                      res = response;
+                      response.response = res;
                     });
                   },
                 ),
@@ -81,17 +82,7 @@ class OrganizationSignupPageState extends State<OrganizationSignupPage> {
                 label: 'Address',
                 placeholder: 'Enter your organization\'s address',
               ),
-              SizedBox(height: 16.0),
-              // showCountryPicker(
-              //   context: context,
-              //   showPhoneCode:
-              //       true, // optional. Shows phone code before the country name.
-              //   onSelect: (Country country) {
-              //     setState(() {
-              //       _organization.country = country.displayName;
-              //     });
-              //   },
-              // ),
+
               SizedBox(height: 16.0),
               _buildTextField(
                 type: 'mission',
@@ -104,12 +95,27 @@ class OrganizationSignupPageState extends State<OrganizationSignupPage> {
                 label: 'Description',
                 placeholder: 'Enter your organization\'s description',
               ),
+              SizedBox(height: 16.0),
+              ElevatedButton(
+                  onPressed: () {
+                    showCountryPicker(
+                        context: context,
+                        showPhoneCode:
+                            false, // optional. Shows phone code before the country name.
+                        onSelect: (Country country) {
+                          setState(() {
+                            print(country.displayNameNoCountryCode);
+                            _organization.country = country.displayName;
+                          });
+                        });
+                  },
+                  child: Text("Select Country 🔻")),
               SizedBox(height: 26.0),
               ElevatedButton(
                 onPressed: () {
                   print(_organization.image.path);
-                  print(response);
-                  print(_organization.toJson());
+                  print(response.response);
+                  // print(_organization.toJson());
                   // orgSignUp(_organization);
                 },
                 child: Text(
