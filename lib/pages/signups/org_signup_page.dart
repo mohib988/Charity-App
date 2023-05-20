@@ -1,4 +1,7 @@
 import 'dart:io';
+import 'package:cloudinary_flutter/cloudinary_context.dart';
+import 'package:cloudinary_flutter/image/cld_image.dart';
+import 'package:cloudinary_url_gen/cloudinary.dart';
 import 'package:flutter_application_1/pages/signups/components/avatar_picker.dart';
 
 import 'package:flutter/material.dart';
@@ -46,6 +49,7 @@ class OrganizationSignupPageState extends State<OrganizationSignupPage> {
 
   @override
   Widget build(BuildContext context) {
+    CloudinaryContext.cloudinary = Cloudinary.fromCloudName(cloudName: 'djecqwc0z');
     return Scaffold(
       appBar: AppBar(
         title: Text('Charity Signup'),
@@ -56,6 +60,7 @@ class OrganizationSignupPageState extends State<OrganizationSignupPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              
               Padding(
                 padding: const EdgeInsets.all(32.0),
                 child: AvatarPicker(
@@ -66,6 +71,10 @@ class OrganizationSignupPageState extends State<OrganizationSignupPage> {
                   },
                 ),
               ),
+            //   CldImageWidget(
+            //   publicId: "dog",
+            // ),
+            
               _buildTextField(
                 type: 'name',
                 label: 'Organization Name',

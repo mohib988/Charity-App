@@ -4,6 +4,7 @@ import 'package:flutter_application_1/pages/OrganizationProfilePage/org_profile_
 import 'package:flutter_application_1/pages/homepage/org_card.dart';
 import 'package:flutter_application_1/pages/signups/org_signup_page.dart';
 import 'package:flutter_application_1/urls/urls.dart';
+import 'package:flutter_session_manager/flutter_session_manager.dart';
 
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -93,6 +94,7 @@ class SignupPageState extends State<SignupPage> {
 
   @override
   Widget build(BuildContext context) {
+    var signupSession = SessionManager();
     return Scaffold(
         appBar: AppBar(
           title: Text('Signup Page'),
@@ -153,25 +155,37 @@ class SignupPageState extends State<SignupPage> {
                 ),
                 SizedBox(height: 8.0),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     // Implement signup logic here
                     print(_user.userType);
                     // userSignup(_user);
-                    userSignup(() {
-                      if (_user.userType == "User") {
+                    if (_user.userType == 'User') {
+                      userSignup(() {
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => OrganizationGrid()),
+                          MaterialPageRoute(
+                              builder: (context) => OrganizationGrid()),
                         );
-                      } else if (_user.userType == "Organization" ){
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) => OrganizationSignupPage()),
-                        );
-                      }
-                    }, _user);
+                      }, _user);
+                    } else {
+                      await signupSession.set("Org_signup_info", _user);
+                      print(signupSession.get("Org_signup_info"));
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => OrganizationSignupPage()),
+                      );
+                    }
+                    // userSignup(() async {
+                    //   if (_user.userType == "User") {
+                    //   } else if (_user.userType == "Organization") {}
+                    // }, _user);
                   },
-                  child: Text('Sign up'),
+                  child: _user.userType == 'User'
+                      ? Text('Sign up')
+                      : _user.userType == 'Organization'
+                          ? Text('Next')
+                          : null,
                 ),
                 Row(
                   children: [
