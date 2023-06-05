@@ -33,7 +33,7 @@ class OrganizationProfile extends StatelessWidget {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.network(
-                                org.image.path,
+                                org.image,
                                 width: 220,
                                 height: 220,
                                 fit: BoxFit.cover,

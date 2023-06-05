@@ -14,7 +14,7 @@ class AppState {
   });
 
   factory AppState.initialState() => AppState(
-        currentOrganization: OrganizationInfo(image: File("")),
+        currentOrganization: OrganizationInfo(image: ''),
         organizationList: [],
         isLoading: false,
       );

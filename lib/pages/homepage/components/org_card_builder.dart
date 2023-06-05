@@ -57,7 +57,7 @@ class _BuildCardState extends State<BuildCard> {
               SizedBox(
                 height: 120,
                 child: Image.network(
-                  widget.org.image.path,
+                  widget.org.image,
                   fit: BoxFit.contain,
                 ),
               ),
