@@ -100,12 +100,12 @@ Future<void> orgSignup(Function sendOrgCred, Function navigateToProfile, orginfo
 
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('authToken', token);
-    print(prefs.getString('authToken'));
+    prefs.setString('authToken', token as String);
+    print('in urls ${prefs.getString('authToken')}');
 
 
 
-    print(token); // Output: The token value
+    print('i am in urls and this is your token $token'); // Output: The token value
 //    var val = autoLoginRequest['key'];
 //    var authToken = autoLoginRequest.key;
     // var user = await apiAuthClient.get('/dj-rest-auth/user/',
