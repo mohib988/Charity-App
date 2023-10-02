@@ -13,6 +13,7 @@ AppState appReducer(AppState state, dynamic action) {
 
 OrganizationInfo organizationReducer(OrganizationInfo state, dynamic action) {
   if (action is SetOrganizationAction) {
+    print(" in reducer file ${action.currentOrganization}");
     return action.currentOrganization;
   }
   return state;
